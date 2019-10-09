@@ -27,9 +27,9 @@ class PipActivity : AppCompatActivity() {
         }
     }
 
-    private fun getSourceRectHint(): Rect? {
+    private fun getSourceRectHint(): Rect {
         val rect = Rect()
-        val windowView = this.window?.decorView ?: return null
+        val windowView = this.window?.decorView!!
         val windowWidth = windowView.width
         val windowHeight = windowView.height
         rect.set(0, 0, windowWidth, windowHeight)
