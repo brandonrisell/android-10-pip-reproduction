@@ -21,13 +21,13 @@ class PipActivity : AppCompatActivity() {
 
         fab_pip.setOnClickListener {
             val params = PictureInPictureParams.Builder()
-                .setSourceRectHint(getFullScreenPlayerHintRect())
+                .setSourceRectHint(getSourceRectHint())
                 .build()
             enterPictureInPictureMode(params)
         }
     }
 
-    private fun getFullScreenPlayerHintRect(): Rect? {
+    private fun getSourceRectHint(): Rect? {
         val rect = Rect()
         val windowView = this.window?.decorView ?: return null
         val windowWidth = windowView.width
