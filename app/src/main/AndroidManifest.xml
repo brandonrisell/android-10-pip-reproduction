@@ -24,10 +24,8 @@
             android:name=".PipActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:label="@string/app_name"
-            android:launchMode="singleTop"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
-            android:taskAffinity="com.brandonrisell.pipitup.PipActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

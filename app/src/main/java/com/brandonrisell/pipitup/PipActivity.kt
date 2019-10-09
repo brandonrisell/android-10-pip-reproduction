@@ -19,21 +19,13 @@ class PipActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pip)
         setSupportActionBar(toolbar_pip)
 
-        fab_pip.setOnClickListener { view ->
+        fab_pip.setOnClickListener {
             val params = PictureInPictureParams.Builder()
                 .setSourceRectHint(getFullScreenPlayerHintRect())
                 .build()
             enterPictureInPictureMode(params)
-            val intent = Intent()
-                .setComponent(ComponentName(this, "com.brandonrisell.pipitup.MainActivity"))
-                .setAction(Intent.ACTION_MAIN)
-                .addCategory(Intent.CATEGORY_LAUNCHER)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
         }
     }
-
-    private fun pipAspectRatio() = Rational(16, 9)
 
     private fun getFullScreenPlayerHintRect(): Rect? {
         val rect = Rect()
@@ -41,14 +33,6 @@ class PipActivity : AppCompatActivity() {
         val windowWidth = windowView.width
         val windowHeight = windowView.height
         rect.set(0, 0, windowWidth, windowHeight)
-        val aspectRatio = pipAspectRatio()
-        val croppedHeight = windowWidth * aspectRatio.denominator / aspectRatio.numerator
-        val croppedWidth = windowHeight * aspectRatio.numerator / aspectRatio.denominator
-        if (croppedHeight <= windowHeight) {
-            rect.inset(0, (windowHeight - croppedHeight) / 2)
-        } else if (croppedWidth <= windowWidth) {
-            rect.inset((windowWidth - croppedWidth) / 2, 0)
-        }
         return rect
     }
 }
